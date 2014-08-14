@@ -1,0 +1,28 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<beans>
+  <bean id="random" class="alx.common.util.CFakeRandom" src="common.swf">
+    <constructor-arg index="0" value="47" />
+  </bean>
+  <bean id="dog-ctrl" class="_MCDog" />
+  <bean id="headshot-ctrl" class="_MCHeadShot" />
+  <bean id="game-start-ctrl" class="_MCGameStart" />
+  <bean id="game-round-ctrl" class="_MCGameRound" />
+  <bean id="game-round-over-ctrl" class="_MCGameRoundOver" />
+  <bean id="game-over-ctrl" class="_MCGameOver" />
+  <bean id="weapon" class="alx.duckhunt.CSniperRifle">
+    <constructor-arg index="0" ref="weapon-animation" />
+    <constructor-arg index="1" ref="magazine-animation" />
+    <constructor-arg index="2" value="-1" />
+    <beans>
+      <bean id="weapon-animation" class="_MCSniperRiffle" />
+      <bean id="magazine-animation" class="_MCSniperRiffleRound" />
+    </beans>
+  </bean>
+  <bean id="cloud-factory" class="alx.duckhunt.CCloudTargetFactory">
+    <constructor-arg index="0" value="0" />
+    <constructor-arg index="1" ref="cloud-animation" />
+    <beans>
+      <bean id="cloud-animation" class="_MCCloud" />
+    </beans>
+  </bean>
+</beans>

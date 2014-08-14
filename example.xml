@@ -1,0 +1,38 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<beans>
+
+  <bean id="abstract-random" class="alx.common.util.IRandom" src="swf/alx.common.util.random.swf" abstract="true">
+    <constructor-arg value="47" />
+  </bean>
+
+  <bean id="fake-random" class="alx.common.util.CFakeRandom" parent="abstract-random" />
+
+  <bean id="normal-random" class="alx.common.util.CRandom" parent="abstract-random" />
+
+  <bean id="mc1" class="_MCDuck" src="swf/duck.swf" prototype="true" />
+
+  <alias name="normal-random" alias="random" />
+
+  <alias name="mc2" alias="mc3" />
+
+  <bean id="test1" class="alx.example.beans.CTestBean" init-method="myinit">
+    <constructor-arg tref="mc1" />
+    <constructor-arg ref="random" />
+  </bean>
+
+  <bean id="test2" class="alx.example.beans.CTestBean" parent="abstract-test">
+    <property name="setClass" tref="mc3" />
+  </bean>
+
+  <bean id="test3" class="alx.example.beans.CTestBean" parent="abstract-test-alias" />
+
+  <bean id="abstract-test" class="alx.example.beans.CTestBean" abstract="true">
+    <constructor-arg tref="random" />
+    <constructor-arg idref="fake-random" />
+  </bean>
+  
+  <alias name="abstract-test" alias="abstract-test-alias" />
+
+  <bean id="mc2" class="_MCDrake" src="swf/drake.swf" prototype="true" />
+
+</beans>
